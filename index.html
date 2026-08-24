@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Kenny Yu is a backend software engineer building dependable Java systems and thoughtful developer tools.">
+  <meta name="theme-color" content="#f4f4f0">
+  <title>Kenny Yu | Backend Software Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&amp;family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <a class="wordmark" href="#top" aria-label="Kenny and Bambi, home">Kenny &amp; Bambi</a>
+    <nav aria-label="Primary navigation">
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+      <a href="#resume">Resume</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="hero-kicker">Backend software engineer</p>
+        <h1 id="hero-title">
+          <span>Kenny</span>
+          <span class="hero-companion">&amp; Bambi</span>
+        </h1>
+        <p class="hero-intro">I build dependable Java systems and useful tools, with care for evidence, performance, and the people using them.</p>
+        <div class="hero-actions">
+          <a class="button" href="#work">View work</a>
+          <a class="text-link" href="assets/Kenny-Yu-Resume.pdf" target="_blank" rel="noopener">Resume <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <p class="scene-note">Move your pointer. Bambi is watching.</p>
+        <svg id="studio-scene" viewBox="0 0 920 640" role="img" aria-labelledby="scene-title scene-description">
+          <title id="scene-title">Kenny coding beside his orange cat</title>
+          <desc id="scene-description">A hand-drawn animated scene. Kenny types at a computer while Bambi looks around and follows the pointer.</desc>
+
+          <defs>
+            <clipPath id="typing-hand-left-clip">
+              <rect x="452" y="278" width="72" height="66"/>
+            </clipPath>
+            <clipPath id="typing-hand-right-clip">
+              <rect x="500" y="300" width="92" height="68"/>
+            </clipPath>
+            <clipPath id="cat-tail-clip">
+              <path d="M596 312 C630 311 669 318 716 305 L728 344 C677 353 632 351 596 341 Z"/>
+            </clipPath>
+            <clipPath id="cat-ear-left-clip">
+              <path d="M704 68 L751 68 L747 129 L708 123 Z"/>
+            </clipPath>
+            <clipPath id="cat-ear-right-clip">
+              <path d="M760 68 L809 68 L801 127 L764 129 Z"/>
+            </clipPath>
+            <mask id="cat-static-mask" maskUnits="userSpaceOnUse" x="520" y="55" width="420" height="340">
+              <rect x="520" y="55" width="420" height="340" fill="white"/>
+              <path d="M598 313 C632 313 669 320 713 307 L722 342 C677 350 634 349 598 340 Z" fill="black"/>
+              <path d="M707 70 L748 70 L745 126 L710 121 Z" fill="black"/>
+              <path d="M763 70 L806 70 L799 125 L766 126 Z" fill="black"/>
+            </mask>
+          </defs>
+
+          <image class="studio-illustration" href="assets/hero-studio-v3.png" x="0" y="0" width="920" height="640" aria-hidden="true"/>
+          <image class="studio-illustration typing-hand typing-hand-left" href="assets/hero-studio-v3.png" x="0" y="0" width="920" height="640" clip-path="url(#typing-hand-left-clip)" aria-hidden="true"/>
+          <image class="studio-illustration typing-hand typing-hand-right" href="assets/hero-studio-v3.png" x="0" y="0" width="920" height="640" clip-path="url(#typing-hand-right-clip)" aria-hidden="true"/>
+
+          <g class="screen-code" transform="matrix(0.7 -0.040 0 0.62 159 37)" aria-hidden="true">
+            <text x="482" y="142">1  @Service</text>
+            <text x="482" y="166">2  public class BambiService {</text>
+            <text x="482" y="190">3</text>
+            <text x="482" y="214">4    private final PointerTracker pointer;</text>
+            <text x="482" y="238">5    private final TreatQueue treats;</text>
+            <text x="482" y="262">6</text>
+            <text x="482" y="286">7    BambiMood follow(Cursor cursor) {</text>
+            <text x="482" y="310">8      return pointer.watch(cursor);</text>
+            <text x="482" y="334">9    }</text>
+            <text x="482" y="358">10 }</text>
+            <path class="screen-cursor" d="M662 293 L662 312"/>
+          </g>
+
+          <g class="monitor-signal" transform="translate(70 -60) scale(0.84)" aria-hidden="true">
+            <path class="monitor-cable" d="M728 312 C756 312 763 330 783 333 C802 335 814 321 812 302 L812 232"/>
+            <path class="monitor-plug" d="M800 222 L813 222 L813 238 L800 238 Z"/>
+          </g>
+
+          <g class="pointer-cursor ink-line" aria-hidden="true">
+            <path class="paper-fill" d="M42 518 L62 553 L68 540 L82 550 L88 542 L72 532 L84 522 Z"/>
+            <path d="M42 518 L62 553 L68 540 L82 550 L88 542 L72 532 L84 522 Z"/>
+            <path class="pointer-click" d="M44 505 L44 493 M34 509 L25 501 M53 507 L61 497"/>
+          </g>
+
+          <path class="signal-line" d="M88 547 C143 558 194 537 260 545 C333 554 390 538 456 548 C538 560 608 541 662 501 C700 472 711 413 710 365 C710 347 708 336 704 330"/>
+
+          <g class="cat-reference">
+            <g class="cat-tail" aria-hidden="true">
+              <image class="cat-illustration" href="assets/hero-cat-front-v2.png" x="525" y="82" width="385" height="312" clip-path="url(#cat-tail-clip)"/>
+            </g>
+            <image class="cat-illustration" href="assets/hero-cat-front-v2.png" x="525" y="82" width="385" height="312" mask="url(#cat-static-mask)"/>
+            <g class="cat-ear cat-ear-left" aria-hidden="true">
+              <image class="cat-illustration" href="assets/hero-cat-front-v2.png" x="525" y="82" width="385" height="312" clip-path="url(#cat-ear-left-clip)"/>
+            </g>
+            <g class="cat-ear cat-ear-right" aria-hidden="true">
+              <image class="cat-illustration" href="assets/hero-cat-front-v2.png" x="525" y="82" width="385" height="312" clip-path="url(#cat-ear-right-clip)"/>
+            </g>
+            <g class="cat-eye-covers" aria-hidden="true">
+              <ellipse cx="730" cy="162.5" rx="5.05" ry="5.05"/>
+              <ellipse cx="762" cy="162.5" rx="5.05" ry="5.05"/>
+            </g>
+            <g id="cat-head" aria-hidden="true">
+              <circle class="cat-pupil" cx="730" cy="162.5" r="4.1"/>
+              <circle class="cat-pupil" cx="762" cy="162.5" r="4.1"/>
+              <circle class="cat-eye-glint" cx="730.4" cy="162.3" r="0.7"/>
+              <circle class="cat-eye-glint" cx="762.4" cy="162.3" r="0.7"/>
+            </g>162
+          </g>
+        </svg>
+      </div>
+    </section>
+
+    <section class="work page-section" id="work" aria-labelledby="work-title">
+      <div class="section-heading reveal">
+        <h2 id="work-title">Selected work</h2>
+        <p>Three public projects that show how I measure, organize, and ship software.</p>
+      </div>
+
+      <article class="project project-feature reveal">
+        <div class="project-copy">
+          <p class="project-type">Java performance engineering</p>
+          <h3><a href="https://github.com/kennyufish/java-backend-performance-lab" target="_blank" rel="noopener">Java Backend Performance Lab <span aria-hidden="true">↗</span></a></h3>
+          <p>A reproducible Spring Boot lab for session reuse and PostgreSQL indexing, with committed methods, raw evidence, Docker verification, and CI.</p>
+          <ul class="tech-list" aria-label="Technologies">
+            <li>Java 21</li>
+            <li>Spring Boot 4.1</li>
+            <li>PostgreSQL 18</li>
+            <li>Gatling</li>
+            <li>Docker</li>
+          </ul>
+        </div>
+
+        <figure class="benchmark-figure">
+          <div class="metric">
+            <p class="metric-label">Authentication mean response</p>
+            <p><span>34</span><b aria-hidden="true">→</b><span class="metric-result">6</span><small>ms</small></p>
+          </div>
+          <div class="metric">
+            <p class="metric-label">PostgreSQL median query</p>
+            <p><span>53.489</span><b aria-hidden="true">→</b><span class="metric-result">0.040</span><small>ms</small></p>
+          </div>
+          <p class="evidence-note">Observed locally under documented synthetic conditions. These are not production-capacity claims.</p>
+        </figure>
+      </article>
+
+      <article class="project project-media reveal">
+        <figure>
+          <img src="assets/foldergram-banner.png" width="1536" height="1024" loading="lazy" decoding="async" alt="Foldergram interface shown across three screens against a dark space background">
+        </figure>
+        <div class="project-copy">
+          <p class="project-type">Local media infrastructure</p>
+          <h3><a href="https://github.com/kennyufish/foldergram-folder-edition-public" target="_blank" rel="noopener">Foldergram Folder Edition <span aria-hidden="true">↗</span></a></h3>
+          <p>An independent, unofficial variant with filesystem-shaped browsing, virtualized grids, incremental scanning, and a separate media worker.</p>
+          <ul class="tech-list" aria-label="Technologies">
+            <li>TypeScript</li>
+            <li>Vue</li>
+            <li>SQLite WAL</li>
+            <li>FFmpeg</li>
+            <li>Docker</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="project project-pet reveal">
+        <div class="project-copy">
+          <p class="project-type">Windows desktop companion</p>
+          <h3><a href="https://github.com/kennyufish/bambi-2d-desktop-pet" target="_blank" rel="noopener">Bambi 2D Desktop Pet <span aria-hidden="true">↗</span></a></h3>
+          <p>A transparent Electron pet with an animation state machine, alpha hit testing, restricted IPC, and persistent behavior.</p>
+          <p class="project-caveat">Beta. Broader installer, multi-monitor, and hands-on acceptance testing remain.</p>
+          <ul class="tech-list" aria-label="Technologies">
+            <li>Electron</li>
+            <li>JavaScript</li>
+            <li>Node.js</li>
+            <li>Python</li>
+          </ul>
+        </div>
+        <figure class="pet-figure">
+          <img src="assets/bambi-walking.gif" width="720" height="400" loading="lazy" decoding="async" alt="Bambi, an orange tabby desktop pet, walking from left to right">
+        </figure>
+      </article>
+    </section>
+
+    <section class="about page-section" id="about" aria-labelledby="about-title">
+      <h2 class="reveal" id="about-title">About</h2>
+      <p class="about-lead reveal">I am a backend software engineer who likes clear boundaries, measurable behavior, and software that explains itself.</p>
+      <div class="about-grid">
+        <p class="reveal">My daily work centers on Java, Groovy, REST APIs, Oracle SQL, and JPA/EclipseLink. Independent projects let me explore performance, desktop software, and local-first tools.</p>
+        <p class="about-note reveal">The common thread is simple: understand the real system, make the smallest useful change, and leave evidence behind.</p>
+      </div>
+    </section>
+
+    <section class="resume page-section" id="resume" aria-labelledby="resume-title">
+      <div class="resume-intro reveal">
+        <h2 id="resume-title">Resume</h2>
+        <p>A concise view of my backend focus and selected tools.</p>
+        <a class="button button-outline" href="assets/Kenny-Yu-Resume.pdf" target="_blank" rel="noopener">Open PDF <span aria-hidden="true">↗</span></a>
+      </div>
+      <div class="resume-ledger reveal">
+        <div>
+          <h3>Focus</h3>
+          <p>Backend systems</p>
+          <p>API design</p>
+          <p>Performance evidence</p>
+          <p>Reliability</p>
+        </div>
+        <div>
+          <h3>Core stack</h3>
+          <p>Java and Groovy</p>
+          <p>SQL and REST APIs</p>
+          <p>JPA/EclipseLink</p>
+          <p>Spring Boot and PostgreSQL</p>
+        </div>
+        <div>
+          <h3>Working style</h3>
+          <p>Root-cause thinking</p>
+          <p>Reproducible checks</p>
+          <p>Clear documentation</p>
+          <p>Privacy-aware delivery</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact page-section" id="contact" aria-labelledby="contact-title">
+      <div class="contact-copy reveal">
+        <h2 id="contact-title">Find me here.</h2>
+        <p>GitHub for the code. LinkedIn for the conversation.</p>
+      </div>
+      <div class="contact-links reveal">
+        <a href="https://github.com/kennyufish" target="_blank" rel="noopener"><span>GitHub</span><span aria-hidden="true">↗</span></a>
+        <a href="https://www.linkedin.com/in/tsz-kin-yu-574b48171/" target="_blank" rel="noopener"><span>LinkedIn</span><span aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Kenny Yu, Backend Software Engineer</p>
+    <p>Built with HTML, CSS, JavaScript, and one watchful cat.</p>
+  </footer>
+</body>
+</html>

@@ -135,8 +135,12 @@ ul {
 
 .site-header nav {
   display: flex;
+  flex: 0 1 auto;
   align-items: center;
+  flex-wrap: wrap;
   gap: clamp(1rem, 2.5vw, 2.75rem);
+  justify-content: flex-end;
+  min-width: 0;
   font-size: 0.9rem;
   font-weight: 500;
 }
@@ -163,7 +167,8 @@ ul {
 }
 
 .site-header nav a:hover::after,
-.site-header nav a:focus-visible::after {
+.site-header nav a:focus-visible::after,
+.site-header nav a[aria-current="page"]::after {
   transform: scaleX(1);
   transform-origin: left;
 }
@@ -644,6 +649,28 @@ ul {
   font-weight: 600;
 }
 
+.project-page-link {
+  display: inline-flex;
+  min-height: 2.4rem;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 1.25rem;
+  border-bottom: 1px solid var(--ink);
+  color: var(--signal-dark);
+  font-size: 0.82rem;
+  font-weight: 600;
+  transition:
+    border-color 220ms var(--ease),
+    color 220ms var(--ease),
+    transform 220ms var(--ease);
+}
+
+.project-page-link:hover {
+  border-color: var(--signal);
+  color: var(--signal);
+  transform: translateX(2px);
+}
+
 .pet-figure {
   position: relative;
   overflow: hidden;
@@ -653,6 +680,195 @@ ul {
 
 .pet-figure img {
   width: 100%;
+  mix-blend-mode: multiply;
+}
+
+.bambi-page {
+  background: var(--paper);
+}
+
+.bambi-hero {
+  display: grid;
+  min-height: min(100dvh, 62rem);
+  align-items: center;
+  grid-template-columns: minmax(17rem, 0.78fr) minmax(24rem, 1.22fr);
+  gap: clamp(2.5rem, 7vw, 8rem);
+  padding-top: clamp(7.5rem, 12vw, 11rem);
+  padding-bottom: clamp(5rem, 10vw, 9rem);
+}
+
+.bambi-hero-copy {
+  max-width: 34rem;
+}
+
+.bambi-kicker {
+  margin-bottom: 1.3rem;
+  color: var(--signal-dark);
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.bambi-hero h1 {
+  max-width: 8ch;
+  font-family: var(--display);
+  font-size: clamp(5rem, 9vw, 9.6rem);
+  font-weight: 800;
+  letter-spacing: -0.045em;
+  line-height: 0.78;
+  text-transform: uppercase;
+  text-wrap: balance;
+}
+
+.bambi-hero h1 span {
+  display: block;
+  color: var(--signal);
+}
+
+.bambi-intro {
+  max-width: 32rem;
+  margin-top: clamp(2rem, 4vw, 3.4rem);
+  color: var(--graphite);
+  font-size: clamp(1.04rem, 1.4vw, 1.2rem);
+  line-height: 1.55;
+  text-wrap: pretty;
+}
+
+.bambi-aside {
+  max-width: 20rem;
+  margin-top: clamp(2rem, 5vw, 4rem);
+  padding: 0.4rem 0 0.4rem 1rem;
+  border-left: 2px solid var(--signal);
+  color: var(--graphite);
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  line-height: 1.5;
+}
+
+.bambi-hero-image {
+  width: min(100%, 42rem);
+  margin-left: auto;
+  overflow: hidden;
+  background: var(--paper-deep);
+}
+
+.bambi-hero-image img {
+  width: 100%;
+  height: auto;
+  filter: saturate(0.9) contrast(1.02);
+}
+
+.bambi-gallery {
+  padding-top: clamp(5rem, 10vw, 9rem);
+  padding-bottom: clamp(5rem, 11vw, 10rem);
+}
+
+.bambi-gallery-heading {
+  padding-top: 1.4rem;
+  border-top: 1px solid var(--ink);
+}
+
+.bambi-gallery-heading h2 {
+  max-width: 12ch;
+  font-family: var(--display);
+  font-size: clamp(3.8rem, 7vw, 7.2rem);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: 0.9;
+  text-transform: uppercase;
+  text-wrap: balance;
+}
+
+.bambi-grid {
+  display: grid;
+  margin-top: clamp(3.5rem, 8vw, 7.5rem);
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  align-items: start;
+  column-gap: clamp(1rem, 3vw, 3rem);
+  row-gap: clamp(3rem, 7vw, 7rem);
+}
+
+.bambi-photo {
+  overflow: hidden;
+  background: var(--paper-deep);
+}
+
+.bambi-photo img {
+  width: 100%;
+  height: auto;
+  filter: saturate(0.88) contrast(1.02);
+}
+
+.bambi-photo:nth-child(1) {
+  grid-column: 1 / span 5;
+  margin-top: clamp(2rem, 5vw, 5rem);
+}
+
+.bambi-photo:nth-child(2) {
+  grid-column: 7 / span 6;
+}
+
+.bambi-photo:nth-child(3) {
+  grid-column: 2 / span 4;
+  margin-top: clamp(2rem, 8vw, 8rem);
+}
+
+.bambi-photo:nth-child(4) {
+  grid-column: 8 / span 5;
+  margin-top: clamp(1rem, 5vw, 5rem);
+}
+
+.bambi-photo:nth-child(5) {
+  grid-column: 4 / span 6;
+  margin-top: clamp(2rem, 8vw, 8rem);
+}
+
+.bambi-bridge {
+  display: grid;
+  align-items: end;
+  grid-template-columns: minmax(18rem, 0.9fr) minmax(24rem, 1.1fr);
+  gap: clamp(2.5rem, 7vw, 8rem);
+  padding-top: clamp(4rem, 8vw, 7rem);
+  padding-bottom: clamp(5rem, 10vw, 9rem);
+  border-top: 1px solid var(--ink);
+  background: var(--paper-warm);
+}
+
+.bambi-bridge-copy {
+  align-self: center;
+}
+
+.bambi-bridge h2 {
+  max-width: 11ch;
+  font-family: var(--display);
+  font-size: clamp(3.6rem, 6vw, 6.5rem);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: 0.88;
+  text-wrap: balance;
+}
+
+.bambi-bridge-text {
+  max-width: 32rem;
+  margin-top: 1.7rem;
+  color: var(--graphite);
+  text-wrap: pretty;
+}
+
+.bambi-bridge .button {
+  margin-top: 2.4rem;
+}
+
+.bambi-bridge-media {
+  overflow: hidden;
+  border-bottom: 2px solid var(--ink);
+}
+
+.bambi-bridge-media img {
+  width: 100%;
+  height: auto;
   mix-blend-mode: multiply;
 }
 
@@ -1148,6 +1364,41 @@ footer {
   }
 }
 
+@media (max-width: 48rem) {
+  .bambi-hero {
+    min-height: auto;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    padding-top: 7rem;
+  }
+
+  .bambi-hero-image {
+    width: min(100%, 34rem);
+  }
+
+  .bambi-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 1rem;
+    row-gap: 3rem;
+  }
+
+  .bambi-photo:nth-child(n) {
+    grid-column: auto;
+    margin-top: 0;
+  }
+
+  .bambi-photo:nth-child(5) {
+    grid-column: 1 / -1;
+    width: min(100%, 28rem);
+    margin-left: auto;
+  }
+
+  .bambi-bridge {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+}
+
 @media (max-width: 24rem) {
   .site-header {
     gap: 0.5rem;
@@ -1163,6 +1414,42 @@ footer {
     align-items: flex-start;
     flex-direction: column;
     gap: 0.8rem;
+  }
+}
+
+@media (max-width: 30rem) {
+  .site-header {
+    align-items: flex-start;
+  }
+
+  .site-header nav {
+    max-width: 13rem;
+    column-gap: 0.55rem;
+    row-gap: 0;
+  }
+
+  .site-header nav a {
+    min-height: 2.35rem;
+    padding: 0.35rem 0;
+  }
+
+  .bambi-hero h1 {
+    font-size: clamp(4.6rem, 22vw, 6.4rem);
+  }
+
+  .bambi-gallery-heading h2,
+  .bambi-bridge h2 {
+    font-size: clamp(3.4rem, 17vw, 5.2rem);
+  }
+
+  .bambi-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .bambi-photo:nth-child(5) {
+    grid-column: auto;
+    width: 100%;
+    margin-left: 0;
   }
 }
 

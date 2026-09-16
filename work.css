@@ -1,0 +1,132 @@
+/* Work owns its motion; the hero, photo page and shared tokens stay unchanged. */
+body:has(.work) { overflow-x: clip; }
+.work { padding-bottom: clamp(5rem, 9vw, 9rem); }
+.work .section-heading { max-width: 56rem; margin-bottom: clamp(3rem, 6vw, 6rem); }
+.work .section-heading h2 { font-size: clamp(4rem, 9vw, 9rem); }
+.work-stack { position: relative; isolation: isolate; display: grid; gap: clamp(3rem, 8vh, 7rem); }
+.work-card { min-width: 0; scroll-margin-top: 6rem; }
+.work-surface { position: relative; padding: clamp(1.25rem, 2.8vw, 2.75rem); border: 1px solid var(--hairline); border-top-color: var(--ink); background: var(--paper); transform-origin: 50% 0; }
+.work-card-heading { display: flex; align-items: center; gap: 1.3rem; padding-bottom: 1.35rem; border-bottom: 1px solid var(--hairline); }
+.work-number { color: var(--signal-dark); font: 500 1.1rem var(--mono); }
+.work-card-heading .project-type { margin: 0; color: var(--graphite); }
+.work-edition { margin-left: auto; font: .7rem var(--mono); color: var(--graphite); }
+.work-layout { display: grid; grid-template-columns: minmax(0, .95fr) minmax(0, 1.1fr); gap: clamp(2rem, 4vw, 4rem); align-items: center; padding-top: 2rem; }
+.work-card .project-copy { min-width: 0; }
+.work-card h3 { font: 700 clamp(2.8rem, 4.2vw, 4.7rem)/.98 var(--display); letter-spacing: -.025em; }
+.work-card h3 > span { display: block; }
+.work-card .project-copy > p:not(.project-caveat) { margin-top: 1.4rem; font-size: .95rem; }
+.work-card .project-caveat { font-size: .78rem; }
+.work-card .tech-list { margin-top: 1.2rem; }
+.work-card .project-page-link { margin-top: .65rem; }
+.work-links { display: flex; flex-wrap: wrap; align-items: center; gap: 1.5rem; margin-top: 1.8rem; font-size: .85rem; }
+.work-links a { display: inline-flex; align-items: center; gap: .5rem; min-height: 44px; border-bottom: 1px solid var(--hairline); }
+.work-links a:hover { color: var(--signal-dark); }
+.work-open, .work-close, .work-video-toggle { display: inline-flex; align-items: center; justify-content: space-between; gap: 1.2rem; min-height: 44px; border: 0; color: inherit; background: transparent; font: inherit; cursor: pointer; }
+.work-open { padding: .5rem 0; border-bottom: 1px solid var(--signal-dark); color: var(--signal-dark); }
+.work-open > span:last-child, .work-links a > span { transition: transform .3s var(--ease); }
+.work-open:hover > span:last-child, .work-links a:hover > span { transform: translate(3px, -3px); }
+.work [hidden], .work-dialog [hidden] { display: none !important; }
+.work-visual { min-width: 0; position: relative; transform: perspective(900px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg)); transition: transform .6s var(--ease); }
+.work-visual figcaption { font: .7rem/1.5 var(--mono); }
+.work-benchmark { display: grid; gap: 1.6rem; padding: clamp(1.5rem, 2.4vw, 2.5rem); background: var(--paper-warm); }
+.work-benchmark > figcaption { padding-bottom: .8rem; border-bottom: 1px solid var(--hairline); }
+.work-benchmark .metric .metric-label { display: block; margin-bottom: .9rem; font: .7rem/1.5 var(--mono); letter-spacing: 0; }
+.work-benchmark .metric p:not(.metric-label) { font-size: clamp(2.8rem, 4.5vw, 5.2rem); gap: .6rem; white-space: nowrap; }
+.work-bars { display: grid; gap: 5px; margin-top: 1.2rem; }
+.work-bars i { display: block; width: var(--bar-width, 100%); height: 3px; background: var(--graphite); transform-origin: left; }
+.work-bars i + i { background: var(--signal-dark); }
+.work-benchmark .evidence-note { font-size: .68rem; line-height: 1.5; padding-top: .8rem; border-color: var(--hairline); }
+#work-foldergram .work-layout { grid-template-columns: minmax(0, 1.2fr) minmax(0, .85fr); }
+.work-foldergram { overflow: hidden; background: #111113; color: #f4f4f0; }
+.work-foldergram img { width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; object-position: center 5%; transform: translateY(var(--image-drift, 0px)) scale(1.015); transition: transform .5s var(--ease); }
+.work-foldergram figcaption { position: relative; padding: 1.1rem 1.5rem; background: #111113; border-top: 1px solid #414143; }
+.work-pet { display: grid; align-content: center; min-height: 24rem; padding: 1.75rem; overflow: hidden; background: var(--paper-deep); }
+.work-pet figcaption { margin-bottom: 1rem; }
+.work-pet-video { display: block; width: 100%; height: auto; background: #fff; border: 1px solid var(--hairline); }
+.work-video-toggle { justify-self: end; font: .7rem var(--mono); padding: .5rem 0; }
+.work-video-toggle[aria-pressed="false"] .video-play-label, .work-video-toggle[aria-pressed="true"] .video-pause-label { display: none; }
+
+/* Sticky is enabled only when every card fits the viewport; zoom and short
+   screens fall back to natural flow instead of hiding content under cards. */
+.work-stacked .work-stack { gap: 25vh; padding-bottom: 12vh; }
+.work-stacked .work-card { position: sticky; top: calc(6rem + var(--card-index) * 12px); }
+.work-stacked .work-card:nth-child(1) { z-index: 1; }
+.work-stacked .work-card:nth-child(2) { z-index: 2; }
+.work-stacked .work-card:nth-child(3) { z-index: 3; }
+.work-stacked .work-surface { transform: translateY(calc(var(--stack-progress, 0) * -12px)) scale(calc(1 - var(--stack-progress, 0) * .045)); }
+.work-stacked.work-keyboard .work-card:focus-within { z-index: 4; }
+.work-stacked.work-keyboard .work-card:focus-within .work-surface { transform: none; }
+@media (prefers-reduced-motion: no-preference) {
+  .work-ready .work-card:not(.is-revealed) h3 > span { opacity: 0; transform: translateY(24px); }
+  .work-ready .work-card h3 > span { transition: transform .75s var(--ease), opacity .6s ease; }
+  .work-ready .work-card h3 > span + span { transition-delay: .09s; }
+  .work-ready .work-card:not(.is-revealed) .work-bars i { transform: scaleX(0); }
+  .work-ready .work-bars i { transition: transform 1s var(--ease) .15s; }
+  .work-ready .work-bars i + i { transition-delay: .3s; }
+}
+
+.work-dialog { position: fixed; inset: 0; width: min(70rem, calc(100% - 4rem)); max-width: none; max-height: calc(100dvh - 4rem); padding: 0; border: 1px solid var(--hairline); background: var(--paper); color: var(--ink); overscroll-behavior: contain; }
+.work-dialog::backdrop { background: rgb(10 12 11 / .65); }
+.work-dialog[open] { animation: work-detail-in .4s var(--ease); }
+.work-dialog-bar { display: flex; position: sticky; top: 0; z-index: 2; align-items: center; justify-content: space-between; padding: .8rem 2.5rem; background: var(--paper); border-bottom: 1px solid var(--hairline); font: .75rem var(--mono); }
+.work-close { font-size: .85rem; }
+.work-close > span:last-child { font: 1.7rem var(--body); }
+.work-dialog-content { padding: clamp(1.5rem, 4vw, 3.5rem); }
+.work-detail-summary { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; align-items: center; }
+.work-detail-summary h3 { font: 700 clamp(2.7rem, 4vw, 4.2rem)/1 var(--display); letter-spacing: -.02em; }
+.work-detail-summary h3 span { display: block; }
+.work-detail-summary .work-open, .work-detail-summary .project-page-link { display: none; }
+.work-detail-summary .work-links { margin-top: 1rem; }
+.work-detail-summary .project-copy > p { font-size: .95rem; }
+.work-detail-summary .work-visual { transform: none; }
+.work-detail-summary .work-foldergram img { aspect-ratio: auto; object-fit: contain; transform: none; }
+.work-detail-summary .work-pet { min-height: 0; padding: 1.25rem; }
+.work-detail-summary .work-benchmark { padding: 1.25rem; }
+.work-detail-summary .work-benchmark .metric p:not(.metric-label) { font-size: clamp(2.7rem, 4vw, 4.4rem); }
+.work-detail-notes { border-top: 1px solid var(--hairline); padding-top: 2rem; margin-top: 3rem; }
+.work-detail-notes h4 { margin: 0 0 1rem; font: 600 clamp(1.9rem, 3vw, 2.8rem)/1.15 var(--display); }
+.work-detail-notes > p { max-width: 65ch; color: var(--graphite); }
+.work-detail-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; margin: 2rem 0; }
+.work-detail-columns h5 { margin: 0 0 .8rem; font: 500 .8rem var(--mono); color: var(--signal-dark); }
+.work-detail-columns p { font-size: .95rem; color: var(--graphite); }
+html.work-modal-open { overflow: hidden; scrollbar-gutter: stable; }
+@keyframes work-detail-in { from { opacity: 0; transform: translateY(24px) scale(.985); } to { opacity: 1; transform: none; } }
+@media (min-width: 64rem) and (max-height: 50rem) {
+  .work-surface { padding: 1.5rem; }
+  .work-layout { padding-top: 1.5rem; gap: 2rem; }
+  .work-card h3 { font-size: 2.85rem; }
+  .work-card .project-copy > p:not(.project-caveat) { font-size: .9rem; }
+  .work-benchmark { gap: 1.2rem; padding: 1.5rem; }
+  .work-pet { min-height: 20rem; }
+  .work-foldergram img { max-height: 20rem; }
+  .work-detail-summary .work-foldergram img { max-height: none; }
+}
+@media (max-width: 63.99rem) {
+  .work-layout, #work-foldergram .work-layout { grid-template-columns: 1fr; gap: 2rem; }
+  .work-card h3 { font-size: clamp(3rem, 6.5vw, 4.5rem); }
+  .work-card .project-copy { order: 0; }
+  .work-card .work-visual { order: 1; }
+  .work-edition { display: none; }
+  .work-card .project-copy > p { max-width: 48ch; }
+  .work-pet { min-height: 0; }
+  .work-benchmark .metric p:not(.metric-label) { font-size: clamp(3rem, 8vw, 5rem); }
+  .work-visual { transform: none; }
+}
+@media (max-width: 47.99rem) {
+  .work-card-heading { gap: .85rem; }
+  .work-card-heading .project-type { font-size: .65rem; }
+  .work-layout { padding-top: 1.5rem; }
+  .work-dialog { width: 100%; height: 100dvh; max-height: 100dvh; margin: 0; border: 0; }
+  .work-dialog-bar { padding: .5rem 1.25rem; }
+  .work-detail-summary, .work-detail-columns { grid-template-columns: 1fr; gap: 1.75rem; }
+  .work-detail-notes { margin-top: 2rem; }
+  .work-links { gap: 1.1rem; }
+  .work-pet { padding: 1rem; }
+  .work-benchmark { padding: 1.1rem; }
+  .work-benchmark .metric p:not(.metric-label) { font-size: clamp(2.5rem, 9vw, 3.6rem); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .work-visual, .work-foldergram img, .work-surface, .work-card h3 > span { transform: none !important; }
+  .work-card h3 > span { opacity: 1 !important; }
+  .work-dialog[open] { animation: none; }
+}

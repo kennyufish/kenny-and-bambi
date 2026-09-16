@@ -10,7 +10,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&amp;family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="home-3d.css?v=bambi-interaction">
+  <link rel="stylesheet" href="work.css?v=stacked-work">
   <script src="script.js" defer></script>
+  <script src="assets/home.bundle.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -27,7 +30,8 @@
   </header>
 
   <main id="main">
-    <section class="hero" id="top" aria-labelledby="hero-title">
+    <section class="hero home-3d" id="top" aria-labelledby="hero-title">
+      <div id="scene-root"></div>
       <div class="hero-copy">
         <p class="hero-kicker">Backend software engineer</p>
         <h1 id="hero-title">
@@ -41,6 +45,7 @@
         </div>
       </div>
 
+      <template id="original-hero-art">
       <div class="hero-visual">
         <p class="scene-note">Move your pointer. Bambi is watching.</p>
         <svg id="studio-scene" viewBox="0 0 920 640" role="img" aria-labelledby="scene-title scene-description">
@@ -126,6 +131,7 @@
           </g>
         </svg>
       </div>
+      </template>
     </section>
 
     <section class="work page-section" id="work" aria-labelledby="work-title">
@@ -134,10 +140,13 @@
         <p>Three public projects that show how I measure, organize, and ship software.</p>
       </div>
 
-      <article class="project project-feature reveal">
+      <div class="work-stack">
+      <article class="work-card" id="work-java" aria-labelledby="java-title">
+        <div class="work-surface">
+        <div class="work-card-heading"><span class="work-number" aria-hidden="true">01</span><p class="project-type">Java performance engineering</p><span class="work-edition">Java / SQL</span></div>
+        <div class="work-layout">
         <div class="project-copy">
-          <p class="project-type">Java performance engineering</p>
-          <h3><a href="https://github.com/kennyufish/java-backend-performance-lab" target="_blank" rel="noopener">Java Backend Performance Lab <span aria-hidden="true">↗</span></a></h3>
+          <h3 id="java-title"><span>Java Backend</span><span>Performance Lab</span></h3>
           <p>A reproducible Spring Boot lab for session reuse and PostgreSQL indexing, with committed methods, raw evidence, Docker verification, and CI.</p>
           <ul class="tech-list" aria-label="Technologies">
             <li>Java 21</li>
@@ -146,28 +155,36 @@
             <li>Gatling</li>
             <li>Docker</li>
           </ul>
+          <div class="work-links"><button class="work-open" type="button" data-project="java" aria-haspopup="dialog" aria-controls="work-dialog" hidden><span>Explore project</span><span aria-hidden="true">↗</span></button><a href="https://github.com/kennyufish/java-backend-performance-lab" target="_blank" rel="noopener">GitHub <span aria-hidden="true">↗</span></a></div>
         </div>
 
-        <figure class="benchmark-figure">
+        <figure class="work-visual work-benchmark">
+          <figcaption>Less waiting. Same work.</figcaption>
           <div class="metric">
             <p class="metric-label">Authentication mean response</p>
             <p><span>34</span><b aria-hidden="true">→</b><span class="metric-result">6</span><small>ms</small></p>
+            <div class="work-bars" aria-hidden="true"><i></i><i style="--bar-width:17.647%"></i></div>
           </div>
           <div class="metric">
             <p class="metric-label">PostgreSQL median query</p>
             <p><span>53.489</span><b aria-hidden="true">→</b><span class="metric-result">0.040</span><small>ms</small></p>
+            <div class="work-bars" aria-hidden="true"><i></i><i style="--bar-width:0.0748%"></i></div>
           </div>
           <p class="evidence-note">Observed locally under documented synthetic conditions. These are not production-capacity claims.</p>
         </figure>
+        </div></div>
       </article>
 
-      <article class="project project-media reveal">
-        <figure>
-          <img src="assets/foldergram-banner.png" width="1536" height="1024" loading="lazy" decoding="async" alt="Foldergram interface shown across three screens against a dark space background">
+      <article class="work-card" id="work-foldergram" aria-labelledby="foldergram-title">
+        <div class="work-surface">
+        <div class="work-card-heading"><span class="work-number" aria-hidden="true">02</span><p class="project-type">Local media infrastructure</p><span class="work-edition">TypeScript / Vue</span></div>
+        <div class="work-layout">
+        <figure class="work-visual work-foldergram">
+          <img src="assets/foldergram-banner.png" width="1020" height="1454" loading="lazy" decoding="async" alt="Foldergram library interface with folder navigation, search and folder cards">
+          <figcaption>Your folders, in focus.</figcaption>
         </figure>
         <div class="project-copy">
-          <p class="project-type">Local media infrastructure</p>
-          <h3><a href="https://github.com/kennyufish/foldergram-folder-edition-public" target="_blank" rel="noopener">Foldergram Folder Edition <span aria-hidden="true">↗</span></a></h3>
+          <h3 id="foldergram-title"><span>Foldergram</span><span>Folder Edition</span></h3>
           <p>An independent, unofficial variant with filesystem-shaped browsing, virtualized grids, incremental scanning, and a separate media worker.</p>
           <ul class="tech-list" aria-label="Technologies">
             <li>TypeScript</li>
@@ -176,13 +193,17 @@
             <li>FFmpeg</li>
             <li>Docker</li>
           </ul>
+          <div class="work-links"><button class="work-open" type="button" data-project="foldergram" aria-haspopup="dialog" aria-controls="work-dialog" hidden><span>Explore project</span><span aria-hidden="true">↗</span></button><a href="https://github.com/kennyufish/foldergram-folder-edition-public" target="_blank" rel="noopener">GitHub <span aria-hidden="true">↗</span></a></div>
         </div>
+        </div></div>
       </article>
 
-      <article class="project project-pet reveal">
+      <article class="work-card" id="work-bambi" aria-labelledby="bambi-project-title">
+        <div class="work-surface">
+        <div class="work-card-heading"><span class="work-number" aria-hidden="true">03</span><p class="project-type">Windows desktop companion</p><span class="work-edition">Electron / Beta</span></div>
+        <div class="work-layout">
         <div class="project-copy">
-          <p class="project-type">Windows desktop companion</p>
-          <h3><a href="https://github.com/kennyufish/bambi-2d-desktop-pet" target="_blank" rel="noopener">Bambi 2D Desktop Pet <span aria-hidden="true">↗</span></a></h3>
+          <h3 id="bambi-project-title"><span>Bambi</span><span>2D Desktop Pet</span></h3>
           <p>A transparent Electron pet with an animation state machine, alpha hit testing, restricted IPC, and persistent behavior.</p>
           <p class="project-caveat">Beta. Broader installer, multi-monitor, and hands-on acceptance testing remain.</p>
           <a class="project-page-link" href="bambi.html">Meet Bambi <span aria-hidden="true">→</span></a>
@@ -192,12 +213,41 @@
             <li>Node.js</li>
             <li>Python</li>
           </ul>
+          <div class="work-links"><button class="work-open" type="button" data-project="bambi" aria-haspopup="dialog" aria-controls="work-dialog" hidden><span>Explore project</span><span aria-hidden="true">↗</span></button><a href="https://github.com/kennyufish/bambi-2d-desktop-pet" target="_blank" rel="noopener">GitHub <span aria-hidden="true">↗</span></a></div>
         </div>
-        <figure class="pet-figure">
-          <img src="assets/bambi-walking.gif" width="720" height="400" loading="lazy" decoding="async" alt="Bambi, an orange tabby desktop pet, walking from left to right">
+        <figure class="work-visual work-pet">
+          <figcaption>A little company, while you code.</figcaption>
+          <video class="work-pet-video" width="720" height="400" muted loop playsinline preload="none" poster="assets/bambi-walking-poster.png" aria-label="Bambi, an orange tabby desktop pet, walking from left to right"><source src="assets/bambi-walking.mp4" type="video/mp4"></video>
+          <button type="button" class="work-video-toggle" aria-pressed="false" hidden><span class="video-pause-label">Pause preview</span><span class="video-play-label">Play preview</span><span aria-hidden="true">Ⅱ / ▷</span></button>
         </figure>
+        </div></div>
       </article>
+      </div>
     </section>
+
+    <dialog class="work-dialog" id="work-dialog" aria-labelledby="work-detail-title">
+      <div class="work-dialog-bar"><span>Project notes</span><button type="button" class="work-close" autofocus><span>Close</span><span aria-hidden="true">×</span></button></div>
+      <div class="work-dialog-content">
+        <div class="work-detail-summary"></div>
+        <section class="work-detail-notes" data-detail="java" hidden>
+          <h4>Measure, then improve.</h4>
+          <p>This lab examines two specific changes: reusing sessions and adding PostgreSQL indexes. The comparisons are useful alongside the committed method and raw evidence, not as standalone promises.</p>
+          <div class="work-detail-columns"><div><h5>What to look at</h5><p>Session reuse, query indexing, and the difference between authentication response time and database query time.</p></div><div><h5>How to verify it</h5><p>Follow the repository's documented method, inspect the raw results, and use its Docker verification and CI checks.</p></div></div>
+          <p class="project-caveat">Observed locally under documented synthetic conditions. These are not production-capacity claims.</p>
+        </section>
+        <section class="work-detail-notes" data-detail="foldergram" hidden>
+          <h4>Keep the filesystem. Change the view.</h4>
+          <p>An independent, unofficial Foldergram variant, built around browsing media in the shape of the folders that already hold it.</p>
+          <div class="work-detail-columns"><div><h5>Browsing</h5><p>Filesystem-shaped navigation and virtualized grids organize the browsing experience.</p></div><div><h5>Behind the interface</h5><p>Incremental scanning and a separate media worker support the library, with SQLite WAL and FFmpeg in the stack.</p></div></div>
+        </section>
+        <section class="work-detail-notes" data-detail="bambi" hidden>
+          <h4>A small companion. Real application boundaries.</h4>
+          <p>The playful surface sits on a transparent Electron window, with a state machine coordinating the pet's animations and persistent behavior.</p>
+          <div class="work-detail-columns"><div><h5>Interaction</h5><p>Alpha hit testing distinguishes the visible pet from transparent space.</p></div><div><h5>Application boundaries</h5><p>Restricted IPC keeps the communication surface explicit. Broader installer, multi-monitor, and hands-on acceptance testing remain.</p></div></div>
+          <a class="project-page-link" href="bambi.html">Meet Bambi <span aria-hidden="true">→</span></a>
+        </section>
+      </div>
+    </dialog>
 
     <section class="about page-section" id="about" aria-labelledby="about-title">
       <h2 class="reveal" id="about-title">About</h2>

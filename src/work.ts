@@ -18,7 +18,6 @@ export function setupWork() {
   let backdropDown = false;
 
   const updateVideo = () => {
-    if (document.hidden) summary.querySelector('video')?.pause();
     const play = videoVisible && !document.hidden && !dialog.open && !userPaused;
     videoButton.setAttribute('aria-pressed', String(!play));
     if (play) void video.play().catch(() => videoButton.setAttribute('aria-pressed', 'true'));
@@ -91,17 +90,14 @@ export function setupWork() {
     button.hidden = false;
     button.addEventListener('click', () => {
       const card = button.closest('.work-card')!;
-      const copy = card.querySelector('.project-copy')!.cloneNode(true) as HTMLElement;
-      const visual = card.querySelector('.work-visual')!.cloneNode(true) as HTMLElement;
-      // Clone the current language, never retranslate copied text or duplicate IDs.
-      copy.querySelectorAll('[id]').forEach(node => node.removeAttribute('id'));
-      copy.querySelector('.work-open')?.remove();
-      copy.querySelector('h3')!.id = 'work-detail-title';
-      visual.removeAttribute('style');
-      visual.querySelector('.work-video-toggle')?.remove();
-      const preview = visual.querySelector('video');
-      if (preview) { preview.controls = true; preview.preload = 'metadata'; }
-      summary.replaceChildren(copy, visual);
+      // The sheet already carries the summary and visual; the dialog adds the title, the notes and the repository link.
+      const title = card.querySelector('h3')!.cloneNode(true) as HTMLElement;
+      title.id = 'work-detail-title';
+      const links = document.createElement('p');
+      links.className = 'work-links';
+      const repository = card.querySelector('.work-links a');
+      if (repository) links.append(repository.cloneNode(true));
+      summary.replaceChildren(title, links);
       dialog.querySelectorAll<HTMLElement>('[data-detail]').forEach(note => { note.hidden = note.dataset.detail !== button.dataset.project; });
       opener = button;
       document.documentElement.classList.add('work-modal-open');
@@ -116,7 +112,7 @@ export function setupWork() {
   dialog.addEventListener('pointerdown', event => { backdropDown = event.target === dialog && outside(event); });
   dialog.addEventListener('click', event => { if (backdropDown && event.target === dialog && outside(event)) dialog.close(); backdropDown = false; });
   dialog.addEventListener('close', () => {
-    summary.querySelector('video')?.pause(); summary.replaceChildren();
+    summary.replaceChildren();
     document.documentElement.classList.remove('work-modal-open');
     opener?.focus({ preventScroll: true }); updateVideo(); schedule();
   });

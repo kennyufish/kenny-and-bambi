@@ -21,6 +21,21 @@ document.addEventListener("DOMContentLoaded", () => {
     revealItems.forEach((item) => revealObserver.observe(item));
   }
 
+  // Short loops marked data-autoplay play only while visible, and never under reduced motion.
+  document.querySelectorAll("video[data-autoplay]").forEach((video) => {
+    let visible = !("IntersectionObserver" in window);
+    const sync = () => {
+      if (visible && !motionQuery.matches && !document.hidden) video.play().catch(() => {});
+      else video.pause();
+    };
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(([entry]) => { visible = entry.isIntersecting; sync(); }, { threshold: 0.1 }).observe(video);
+    }
+    document.addEventListener("visibilitychange", sync);
+    if (typeof motionQuery.addEventListener === "function") motionQuery.addEventListener("change", sync);
+    sync();
+  });
+
   const scene = document.querySelector("#studio-scene");
   const catHead = document.querySelector("#cat-head");
 

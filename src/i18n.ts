@@ -1,43 +1,12 @@
 export type Language = 'en' | 'zh';
-export const labels = {
-  en: {
-    scroll: 'Browse', orbit: 'Rotate', pan: 'Pan', settings: 'Scene controls', close: 'Close controls',
-    hint: 'Scroll down for selected work', touch: 'Browse scrolls the page. Rotate / Pan enables touch control; pinch to zoom.',
-    mouse: 'Browse keeps this view fixed. Choose Rotate / Pan to explore. Wheel scrolls the page.',
-    keys: 'Click or tap Bambi for a random action. Enter / Space: play with Bambi · Arrows: rotate · Shift + arrows: pan · + / −: zoom · R: reset',
-    zoomIn: 'Zoom in', zoomOut: 'Zoom out', reset: 'Reset view', capture: 'Screenshot', full: 'Fullscreen', exit: 'Exit fullscreen',
-    native: 'Native', pixel: '2px pixel', time: 'Time of day', cycle: 'Play day cycle', stopCycle: 'Pause day cycle',
-    pause: 'Pause motion', resume: 'Resume motion', sunrise: 'Sunrise', noon: 'Noon', sunset: 'Sunset', night: 'Night',
-    bambiActions: 'Bambi', bambiButtons: { run: 'Run around', play: 'Play ball', sleep: 'Take a nap' },
-    bambiTap: 'Tap Bambi for a surprise: a run, a nap, or a little playtime. Wait for him to return before tapping again.',
-    bambiStates: { watch: 'Watching you. Little adventures play automatically.', jump: 'Hopping between the desk and floor…', run: 'Stretching those little legs…', play: 'One ball. Two very busy paws.', sleep: 'Heading to bed for a little nap.' },
-    loading: 'Opening the workspace…', error: '3D is unavailable. Your projects, resume and contact links are still below.',
-    captureError: 'The screenshot could not be saved. Please try again.', saved: 'Scene screenshot saved.',
-    fullError: 'Fullscreen is not available in this browser. You can still explore the scene here.',
-    description: 'Kenny typing at his desk beside coffee and Bambi, in a miniature 3D workspace. Use the scene controls or scroll down to the portfolio.'
-  },
-  zh: {
-    scroll: '浏览', orbit: '旋转', pan: '平移', settings: '场景控制', close: '收起控制',
-    hint: '向下滚动，浏览精选项目', touch: '浏览模式可滑动网页。选择旋转或平移后可操作场景，双指缩放。',
-    mouse: '浏览模式固定当前画面。选择旋转或平移后可拖动，滚轮仍浏览网页。',
-    keys: '点击 Bambi，随机做一个动作。Enter / 空格：和 Bambi 互动 · 方向键旋转 · Shift + 方向键平移 · + / − 缩放 · R 重置',
-    zoomIn: '放大', zoomOut: '缩小', reset: '重置视角', capture: '截图', full: '全屏', exit: '退出全屏',
-    native: '原生', pixel: '2px 像素', time: '一天中的时间', cycle: '播放昼夜', stopCycle: '暂停昼夜',
-    pause: '暂停动画', resume: '继续动画', sunrise: '日出', noon: '正午', sunset: '日落', night: '夜晚',
-    bambiActions: 'Bambi 动作', bambiButtons: { run: '跑一圈', play: '玩球', sleep: '睡一会儿' },
-    bambiTap: '也可以直接点 Bambi，随机跑一圈、睡一觉或玩球。等他回到桌上，再来一次。',
-    bambiStates: { watch: '正在看着你，也会自动出去活动一下。', jump: '正在桌面和地面之间跳跃…', run: '正在活动小短腿…', play: '一颗球，两只忙碌的小爪子。', sleep: '去猫窝里，打个小盹。' },
-    loading: '正在打开工作空间…', error: '当前无法显示 3D。你仍可在下方浏览项目、简历和联系方式。',
-    captureError: '截图未能保存，请重试。', saved: '场景截图已保存。',
-    fullError: '当前浏览器不支持全屏，仍可在这里操作场景。',
-    description: '微缩三维工作室：Kenny 在电脑前打字，桌上有咖啡和橘猫 Bambi。可使用场景控制，或向下滚动浏览作品集。'
-  }
-} as const;
+
 const chinese: Record<string, string> = {
   'Skip to content': '跳到主要内容', 'Work': '作品', 'About': '关于我', 'Resume': '简历', 'Contact': '联系',
-  'Backend software engineer': '后端软件工程师',
+  'Kenny Yu, backend software engineer': 'Kenny Yu，后端软件工程师',
+  'Kenny coding beside his orange cat': 'Kenny 在橘猫旁边写代码',
+  'A hand-drawn animated scene. Kenny types at a computer while Bambi looks around and follows the pointer.': '手绘动画场景：Kenny 在电脑前打字，Bambi 四处张望并跟随指针。',
   'I build dependable Java systems and useful tools, with care for evidence, performance, and the people using them.': '我构建可靠的 Java 系统和实用工具，重视依据、性能，以及真正使用它们的人。',
-  'View work': '查看作品', 'Selected work': '精选项目',
+  'View work': '查看作品', 'Move your pointer. Bambi is watching.': '移动鼠标，Bambi 在看着你。', 'Selected work': '精选项目',
   'Three public projects that show how I measure, organize, and ship software.': '三个公开项目，展示我如何衡量性能、组织系统并交付软件。',
   'Java performance engineering': 'Java 性能工程',
   'A reproducible Spring Boot lab for session reuse and PostgreSQL indexing, with committed methods, raw evidence, Docker verification, and CI.': '可复现的 Spring Boot 性能实验，研究会话复用与 PostgreSQL 索引；包含公开的方法、原始数据、Docker 验证和 CI。',
@@ -79,16 +48,45 @@ const chinese: Record<string, string> = {
   'Kenny Yu, Backend Software Engineer': 'Kenny Yu，后端软件工程师',
   'Built with HTML, CSS, JavaScript, and one watchful cat.': '以 HTML、CSS、JavaScript 和一只认真监工的猫咪构建。'
 };
+
+type Swap = { node: Text; original: string; translated: string };
+
 // Preserve the exact English source and the existing semantic portfolio markup.
-const textNodes: { node: Text; original: string; translated: string }[] = [];
-const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
-let node: Node | null;
-while ((node = walker.nextNode())) {
-  if (node.parentElement?.closest('#scene-root, script, style, template')) continue;
-  const original = node.textContent ?? '', key = original.trim();
-  if (chinese[key]) textNodes.push({ node: node as Text, original, translated: original.replace(key, chinese[key]) });
+function collectTextNodes(): Swap[] {
+  const swaps: Swap[] = [];
+  const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+  let node: Node | null;
+  while ((node = walker.nextNode())) {
+    if (node.parentElement?.closest('script, style, template, .language-toggle')) continue;
+    const original = node.textContent ?? '', key = original.trim();
+    if (chinese[key]) swaps.push({ node: node as Text, original, translated: original.replace(key, chinese[key]) });
+  }
+  return swaps;
 }
-export function translatePortfolio(language: Language) {
+
+export function savedLanguage(): Language {
+  try { return localStorage.getItem('portfolio-language') === 'zh' ? 'zh' : 'en'; } catch { return 'en'; }
+}
+
+export function translatePortfolio(language: Language, swaps: Swap[]) {
   document.documentElement.lang = language === 'zh' ? 'zh-CN' : 'en';
-  textNodes.forEach(item => { item.node.textContent = language === 'zh' ? item.translated : item.original; });
+  swaps.forEach(item => { item.node.textContent = language === 'zh' ? item.translated : item.original; });
+}
+
+// One header button switches homepage copy; the Bambi photo page stays English, as before.
+export function setupLanguage() {
+  const swaps = collectTextNodes();
+  const button = document.querySelector<HTMLButtonElement>('.language-toggle');
+  let language = savedLanguage();
+  const apply = () => {
+    translatePortfolio(language, swaps);
+    if (button) {
+      button.textContent = language === 'en' ? '中文' : 'EN';
+      button.lang = language === 'en' ? 'zh-CN' : 'en';
+      button.setAttribute('aria-label', language === 'en' ? '切换到中文' : 'Switch to English');
+    }
+    try { localStorage.setItem('portfolio-language', language); } catch { /* Language still works without storage. */ }
+  };
+  button?.addEventListener('click', () => { language = language === 'en' ? 'zh' : 'en'; apply(); });
+  apply();
 }

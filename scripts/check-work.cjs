@@ -69,7 +69,7 @@ for (const [mobile, reducedMotion] of [[false, false], [true, false], [false, tr
   windowListeners.wheel(); assert.equal(work.classes.has('work-keyboard'), false, 'Mouse scrolling releases a focused sheet');
 }
 const html = fs.readFileSync('index.html', 'utf8');
-for (const project of ['java', 'foldergram', 'bambi']) {
+for (const project of ['eatmeowever', 'java', 'foldergram', 'bambi']) {
   assert.equal((html.match(new RegExp(`data-project="${project}"`, 'g')) || []).length, 1);
   assert.equal((html.match(new RegExp(`data-detail="${project}"`, 'g')) || []).length, 1);
 }
@@ -80,7 +80,7 @@ assert.match(html, /class="studio-ghost"[^>]+hero-studio-ink-red\.webp/, 'Two-in
 assert.ok(!html.includes('home.bundle.js') && !html.includes('home-3d.css'), 'The retired 3D scene is not loaded');
 for (const value of ['34', '6', '53.489', '0.040']) assert.ok(html.includes(`>${value}</span>`));
 assert.ok(!/<video[^>]+autoplay/.test(html), 'Playback follows visibility and motion preferences, not a static autoplay attribute');
-for (const file of ['styles.css', 'work.css', 'assets/portfolio.bundle.js', 'assets/hero-studio-ink-red.webp', 'assets/bambi-walking.mp4', 'assets/bambi-walking-poster.png']) {
+for (const file of ['styles.css', 'work.css', 'assets/portfolio.bundle.js', 'assets/hero-studio-ink-red.webp', 'assets/bambi-walking.mp4', 'assets/bambi-walking-poster.png', 'assets/eat-meowever-look.jpg', 'assets/eat-meowever-filters.jpg']) {
   assert.ok(fs.statSync(file).size > 0);
   assert.ok(fs.readFileSync(file).equals(fs.readFileSync(`dist/${file}`)), `Production asset is current: ${file}`);
 }

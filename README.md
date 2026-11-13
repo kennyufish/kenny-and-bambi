@@ -29,7 +29,7 @@ The build regenerates `assets/portfolio.bundle.js` and the complete static site 
 
 - **Hero.** `script.js` turns Bambi's pupils toward the pointer anywhere on the page and lets him look around when the pointer rests. CSS loops the typing hands, caret, tail sway and ear twitches; the red signal line draws in once after load. Everything pauses offscreen and in hidden tabs, and `prefers-reduced-motion` renders a static scene.
 - **中文 / EN.** One button in the header switches the homepage copy, the Work sheets and the project notes, and remembers the choice in `localStorage`. Project names, technology names and external documents are unchanged. The Bambi photo page stays English.
-- **Work.** On sufficiently tall desktop screens the three sheets stack with native `position: sticky`, scroll-linked recession and one-time title / benchmark reveals. Short screens, tablets, phones and reduced motion keep ordinary document flow. **Explore project** opens a native dialog with the project title, its notes and a GitHub link; the summary and visual stay on the sheet instead of being repeated. Escape, Close or a backdrop click dismisses it and returns focus.
+- **Work.** On sufficiently tall desktop screens the four sheets stack with native `position: sticky`, scroll-linked recession and one-time title / benchmark reveals. Short screens, tablets, phones and reduced motion keep ordinary document flow. **Explore project** opens a native dialog with the project title, its notes and a GitHub link; the summary and visual stay on the sheet instead of being repeated. Escape, Close or a backdrop click dismisses it and returns focus.
 - **Bambi page.** The walking loop is the same small H.264 preview and poster the Work section uses. It plays while visible, pauses in background tabs and never autoplays under reduced motion.
 
 ## Design rules worth keeping
@@ -54,6 +54,7 @@ The build regenerates `assets/portfolio.bundle.js` and the complete static site 
   plate.save('assets/hero-studio-ink-red.webp', 'WEBP', quality=80, method=6)
   ```
 
+- `assets/eat-meowever-look.jpg` and `assets/eat-meowever-filters.jpg` are English screenshots from the EatMeowever | 吃什喵 demo's about page, used on the featured Work sheet.
 - `assets/bambi-walking.mp4` and `assets/bambi-walking-poster.png` serve both the Work sheet and the Bambi page. The old GIF is gone.
 - `concepts/2026-08-23/` holds the original four hero concepts (C was approved). `concepts/2026-11-05/` holds the three alternatives drawn up when the 3D room was retired; M3, the two-ink poster, is the one in production.
 

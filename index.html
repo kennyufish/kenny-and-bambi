@@ -135,13 +135,40 @@
     <section class="work page-section" id="work" aria-labelledby="work-title">
       <div class="section-heading reveal">
         <h2 id="work-title">Selected work</h2>
-        <p>Three public projects that show how I measure, organize, and ship software.</p>
+        <p>Four public projects that show how I measure, organize, and ship software.</p>
       </div>
 
       <div class="work-stack">
+      <article class="work-card work-featured" id="work-eatmeowever" aria-labelledby="eatmeowever-title">
+        <div class="work-surface">
+        <div class="work-card-heading"><span class="work-number" aria-hidden="true">01</span><p class="project-type">Featured web app</p><span class="work-edition">JavaScript / Python</span></div>
+        <div class="work-layout">
+        <div class="project-copy">
+          <h3 id="eatmeowever-title"><span>EatMeowever</span><span lang="zh-CN">吃什喵</span></h3>
+          <p>Can't decide where to eat? A cat-shaped order printer picks a random nearby restaurant, filtered by category, cuisine and distance. No sign-up, and your location never leaves the device.</p>
+          <p class="project-caveat">Public demo. California only for now.</p>
+          <a class="project-page-link" href="https://kennyufish.github.io/eat-meowever-demo/" target="_blank" rel="noopener">Try the demo <span aria-hidden="true">↗</span></a>
+          <ul class="tech-list" aria-label="Technologies">
+            <li>JavaScript</li>
+            <li>Python</li>
+            <li>Overture Maps</li>
+            <li>OpenCC</li>
+            <li>GitHub Actions</li>
+          </ul>
+          <div class="work-links"><button class="work-open" type="button" data-project="eatmeowever" aria-haspopup="dialog" aria-controls="work-dialog" hidden><span>Explore project</span></button><a href="https://github.com/kennyufish/eat-meowever-demo" target="_blank" rel="noopener">GitHub <span aria-hidden="true">↗</span></a><a href="https://kennyufish.github.io/eat-meowever-demo/about/" target="_blank" rel="noopener">About <span aria-hidden="true">↗</span></a></div>
+        </div>
+        <figure class="work-visual work-meow">
+          <div class="work-meow-phones">
+            <img src="assets/eat-meowever-look.jpg" width="360" height="740" loading="lazy" decoding="async" alt="EatMeowever showing a printed order ticket and the picked restaurant, with buttons to open Google Maps or Apple Maps">
+            <img src="assets/eat-meowever-filters.jpg" width="360" height="740" loading="lazy" decoding="async" alt="EatMeowever filters for location, category and distance, with 4356 matching places">
+          </div>
+          <figcaption>What shall we eat today?</figcaption>
+        </figure>
+        </div></div>
+      </article>
       <article class="work-card" id="work-java" aria-labelledby="java-title">
         <div class="work-surface">
-        <div class="work-card-heading"><span class="work-number" aria-hidden="true">01</span><p class="project-type">Java performance engineering</p><span class="work-edition">Java / SQL</span></div>
+        <div class="work-card-heading"><span class="work-number" aria-hidden="true">02</span><p class="project-type">Java performance engineering</p><span class="work-edition">Java / SQL</span></div>
         <div class="work-layout">
         <div class="project-copy">
           <h3 id="java-title"><span>Java Backend</span><span>Performance Lab</span></h3>
@@ -175,7 +202,7 @@
 
       <article class="work-card" id="work-foldergram" aria-labelledby="foldergram-title">
         <div class="work-surface">
-        <div class="work-card-heading"><span class="work-number" aria-hidden="true">02</span><p class="project-type">Local media infrastructure</p><span class="work-edition">TypeScript / Vue</span></div>
+        <div class="work-card-heading"><span class="work-number" aria-hidden="true">03</span><p class="project-type">Local media infrastructure</p><span class="work-edition">TypeScript / Vue</span></div>
         <div class="work-layout">
         <figure class="work-visual work-foldergram">
           <img src="assets/foldergram-banner.png" width="1020" height="1454" loading="lazy" decoding="async" alt="Foldergram library interface with folder navigation, search and folder cards">
@@ -198,7 +225,7 @@
 
       <article class="work-card" id="work-bambi" aria-labelledby="bambi-project-title">
         <div class="work-surface">
-        <div class="work-card-heading"><span class="work-number" aria-hidden="true">03</span><p class="project-type">Windows desktop companion</p><span class="work-edition">Electron / Beta</span></div>
+        <div class="work-card-heading"><span class="work-number" aria-hidden="true">04</span><p class="project-type">Windows desktop companion</p><span class="work-edition">Electron / Beta</span></div>
         <div class="work-layout">
         <div class="project-copy">
           <h3 id="bambi-project-title"><span>Bambi</span><span>2D Desktop Pet</span></h3>
@@ -227,6 +254,13 @@
       <div class="work-dialog-bar"><span>Project notes</span><button type="button" class="work-close" autofocus><span>Close</span><span aria-hidden="true">×</span></button></div>
       <div class="work-dialog-content">
         <div class="work-detail-summary"></div>
+        <section class="work-detail-notes" data-detail="eatmeowever" hidden>
+          <h4>One less decision at dinner.</h4>
+          <p>The demo runs entirely in the browser. Print a ticket for a nearby place, reprint it if you don't like it, or stamp it to keep it. Swipe left to discard, swipe right for details.</p>
+          <div class="work-detail-columns"><div><h5>Data pipeline</h5><p>A Python script reads the latest Overture Maps places release and writes about 2,800 static JSON tiles. OpenCC and OpenStreetMap supply Chinese names, and GitHub Actions deploys to GitHub Pages.</p></div><div><h5>In the browser</h5><p>Plain JavaScript loads only the tiles around you, filters them and draws one at random. There is no build step, no account and nothing saved about your location.</p></div></div>
+          <p class="project-caveat">Public demo, California only. The full version adds a personal restaurant library, dining history, opening hours and wider coverage.</p>
+          <a class="project-page-link" href="https://kennyufish.github.io/eat-meowever-demo/" target="_blank" rel="noopener">Try the demo <span aria-hidden="true">↗</span></a>
+        </section>
         <section class="work-detail-notes" data-detail="java" hidden>
           <h4>Measure, then improve.</h4>
           <p>This lab examines two specific changes: reusing sessions and adding PostgreSQL indexes. The comparisons are useful alongside the committed method and raw evidence, not as standalone promises.</p>
